@@ -4,9 +4,10 @@ const bookController = require("../controllers/bookController");
 
 const router = express.Router();
 
+// router.route("/").get(bookController.getBooks).post(authController.protect, bookController.createBook);
 router.route("/").get(bookController.getBooks).post(bookController.createBook);
 
-router.use(authController.protect);
+// router.use(authController.protect);
 
 router
   .route("/:id")

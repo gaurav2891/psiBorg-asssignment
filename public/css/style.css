@@ -83,3 +83,7 @@
   -ms-flex-pack: end;
   justify-content: flex-end;
 }
+
+.bookTable {
+  font-size: 1.9rem;
+}

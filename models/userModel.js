@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-const crypto = require("crypto");
+const validator = require("validator");
 const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    // validators: []
+    validate: [validator.isEmail, `Please enter a valid email`],
   },
   fullName: {
     type: String,
@@ -20,8 +20,14 @@ const userSchema = new mongoose.Schema({
   },
   passwordConfirm: {
     type: String,
-    required: true,
-    // validators:[]
+    required: [true, "Please confirm your password"],
+    validate: {
+      // This only works on CREATE and SAVE!!!
+      validator: function (el) {
+        return el === this.password;
+      },
+      message: "Passwords are not the same!",
+    },
   },
 });
 

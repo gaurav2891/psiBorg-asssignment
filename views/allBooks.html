@@ -38,6 +38,12 @@
   </body>
 
   <script>
+    let bookData;
+
+    fetch("http://localhost:8000/api/v1/book")
+      .then((re) => re.json())
+      .then((data) => (bookData = data));
+
     const getBooks = async () => {
       const bookData = await fetch("http://localhost:8000/api/v1/book");
       const bookAwait = await bookData.json();
@@ -46,6 +52,7 @@
 
       const tableOption = document.getElementById("bookTable");
 
+      let id;
       for (i = 0; i <= bookAwait.book.length - 1; i++) {
         let temp = "";
         let rows;
@@ -55,20 +62,31 @@
         temp += "<td>" + bookAwait.book[i].price + "</td>";
         temp += "<td>" + bookAwait.book[i].publishedOn + "</td>";
 
+        // const id = bookAwait.book[i]._id;
         temp +=
           "<td>" +
-          `<button  onClick=deleteBook(${bookAwait.book[i].name})> delete </button>` +
+          //   `<button id=${bookAwait.book[i]._id} onClick=deleteBook(${id})> delete </button>` +
+          `<button id=${bookAwait.book[i]._id} onClick=deleteBook(${i})> delete </button>` +
           "</td>";
         temp += rows.innerHTML = temp;
         tableOption.appendChild(rows);
       }
     };
-
     const deleteBook = async (e) => {
-      console.log("jkhj");
-      const id = e;
+      console.log("jkhj", e, bookData);
+      const id = bookData.book[e]._id;
       console.log(id);
-      // const deletedata = await fetch(`http://localhost:8000/api/v1/book/`);
+      document.getElementById("bookTable").deleteRow(e);
+
+      const deletedata = await fetch(
+        `http://localhost:8000/api/v1/book/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      const deleteAwait = await deletedata.json();
+      console.log(deleteAwait);
+      alert(deleteAwait.message);
     };
 
     getBooks();

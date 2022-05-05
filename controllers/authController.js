@@ -10,38 +10,19 @@ const signToken = (id) => {
   return token;
 };
 
-// const createSendToken = (res, id) => {
-//   const token = genToken(id);
-
-const cookieOptions = {
-  expires: new Date(Date.now() + 64 * 24 * 60 * 60 * 1000),
-  httpOnly: true,
-};
-cookieOptions.secure = true;
-
-//   res.cookie("jwt", token, cookieOptions);
-
-//   res.status(200).json({
-//     status: "success",
-//     token: token,
-//   });
-// };
-
 const createSendToken = (res, id) => {
   const token = signToken(id);
 
-  // const cookieOptions = {
-  //   expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000),
-  //   httpOnly: true,
-  // };
-  // if (process.env.NODE_ENV === 'production')
-  // cookieOptions.secure = true;
+  const cookieOptions = {
+    expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000),
+    httpOnly: true,
+  };
+  cookieOptions.secure = true;
 
-  res.cookie("jwt", token);
+  res.cookie("jwt", token, cookieOptions);
 
   console.log(token);
-  // Remove password from output
-  // user.password = undefined;
+
   //
   res.status(200).json({
     status: "success",
@@ -111,7 +92,7 @@ exports.protect = async (req, res, next) => {
     let token;
     if (
       req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer") ///  iske aage (!)  lgaa ke kaam nhi kr skte
+      req.headers.authorization.startsWith("Bearer")
     ) {
       token = req.headers.authorization.split(" ")[1];
     } else if (req.cookies.jwt) {
