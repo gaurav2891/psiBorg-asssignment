@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Book</title>
+  </head>
+  <body>
+    <span class="login-span">
+      In order to create Book, you have to create
+      <a href="/create_author"> Author</a> First
+    </span>
+
+    <h1>Create Book</h1>
+
+    <div class="login-container">
+      <form class="create_book" action>
+        <div>
+          <span class="login-text"> name: </span>
+          <input
+            type="text"
+            class="login-text"
+            id="name"
+            placeholder="Enter full name"
+          />
+        </div>
+
+        <div>
+          <span class="login-text"> price: </span>
+          <input
+            type="number"
+            class="login-text"
+            id="price"
+            placeholder="Enter Price"
+          />
+        </div>
+
+        <div>
+          <span class="login-text"> Author: </span>
+
+          <select id="author" class="option-tag">
+            <option value="volvo"></option>
+          </select>
+        </div>
+
+        <div>
+          <span class="login-text"> publishedOn: </span>
+          <input type="date" class="login-text" id="publishedOn" />
+        </div>
+
+        <button type="submit" class="btn-login">Create Book</button>
+      </form>
+    </div>
+    <script>
+      const createSelect = async () => {
+        const bookData = await fetch("http://localhost:8000/api/v1/author");
+        const bookAwait = await bookData.json();
+
+        console.log("=>>>>", bookAwait);
+
+        const authorOption = document.getElementById("author");
+
+        for (i = 0; i <= bookAwait.data.length; i++) {
+          const options = document.createElement("option");
+          options.innerHTML = bookAwait.data[i].name;
+          console.log(options);
+          authorOption.appendChild(options);
+        }
+      };
+      createSelect();
+    </script>
+    <script src="js/create.js"></script>
+  </body>
+</html>

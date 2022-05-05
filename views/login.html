@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LogIn</title>
+  </head>
+  <body>
+    <h1 class="header">LOGIN PAGE</h1>
+
+    <div class="login-container">
+      <form class="login">
+        <div>
+          <span class="login-text"> Email: </span>
+          <input
+            type="email"
+            class="login-text"
+            id="email"
+            placeholder="Enter Email"
+          />
+        </div>
+
+        <div>
+          <span class="login-text"> Password: </span>
+          <input
+            type="password"
+            class="login-text"
+            id="password"
+            placeholder="Enter password"
+          />
+        </div>
+        <button type="submit" class="btn-login">Login</button>
+      </form>
+
+      <span class="login-span">
+        Don't have an account <a href="/signUp"> Signup</a>
+      </span>
+    </div>
+
+    <script src="js/auth.js"></script>
+  </body>
+</html>

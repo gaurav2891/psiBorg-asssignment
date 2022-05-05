@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Author</title>
+  </head>
+  <body>
+    <h2>Go back to<a href="/">Home</a> Page</h2>
+
+    <h1>Create Author</h1>
+
+    <div class="login-container">
+      <form class="create_author">
+        <div>
+          <Text type="text" class="login-text"> name: </Text>
+          <input
+            type="text"
+            class="login-text"
+            id="name"
+            placeholder="Enter full name"
+          />
+        </div>
+
+        <div>
+          <Text type="text" class="login-text"> DOB: </Text>
+          <input type="date" class="login-text" id="dob" />
+        </div>
+
+        <div>
+          <Text type="text" class="login-text"> Age: </Text>
+          <input
+            type="number"
+            class="login-text"
+            id="age"
+            placeholder="Enter Age"
+          />
+        </div>
+
+        <button type="submit" class="btn-login">Create Author</button>
+      </form>
+    </div>
+
+    <script src="js/create.js"></script>
+  </body>
+</html>

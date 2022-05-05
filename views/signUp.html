@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIgnUp</title>
+  </head>
+  <body>
+    <h1 class="header">SIGNUP PAGE</h1>
+
+    <div class="login-container">
+      <form class="signUp">
+        <div>
+          <Text type="text" class="login-text"> Name: </Text>
+          <input
+            type="text"
+            class="login-text"
+            id="name"
+            placeholder="Enter Name"
+          />
+        </div>
+
+        <div>
+          <Text type="text" class="login-text"> Email: </Text>
+          <input
+            type="email"
+            class="login-text"
+            id="email"
+            placeholder="Enter Email"
+          />
+        </div>
+        <div>
+          <Text type="text" class="login-text"> Password: </Text>
+          <input
+            type="text"
+            class="login-text"
+            id="password"
+            placeholder="Enter password"
+          />
+        </div>
+        <div>
+          <Text type="text" class="login-text"> Password Confirm: </Text>
+          <input
+            type="password"
+            id="passwordConfirm"
+            class="login-text"
+            placeholder="Confirm your password"
+          />
+        </div>
+        <button type="submit" class="btn-login">SignUP</button>
+      </form>
+
+      <span class="login-span">
+        Get back to
+        <a href="/login"> Login</a>
+      </span>
+    </div>
+
+    <script src="js/auth.js"></script>
+  </body>
+</html>
